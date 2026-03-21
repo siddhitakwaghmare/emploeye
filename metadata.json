@@ -1,0 +1,5 @@
+{
+  "name": "Employee Management System",
+  "description": "A modern web application for managing employee records, including adding, deleting, and viewing details.",
+  "requestFramePermissions": []
+}
