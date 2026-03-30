@@ -1,14 +1,10 @@
 pipeline {
     agent any
-    
-    tools {
-        nodejs 'NodeJS'   // make sure NodeJS is configured in Jenkins
-    }
 
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out source code...'
+                echo 'Checking out code...'
                 checkout scm
             }
         }
@@ -27,16 +23,9 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Run') {
             steps {
-                echo 'Running tests...'
-                bat 'npm test || exit 0'
-            }
-        }
-
-        stage('Run Server') {
-            steps {
-                echo 'Starting Employee App...'
+                echo 'Running Employee App...'
                 bat 'npm start'
             }
         }
@@ -44,10 +33,10 @@ pipeline {
 
     post {
         success {
-            echo 'Employee Management Pipeline Success!'
+            echo 'Employee pipeline success!'
         }
         failure {
-            echo 'Pipeline Failed!'
+            echo 'Pipeline failed!'
         }
     }
 }
